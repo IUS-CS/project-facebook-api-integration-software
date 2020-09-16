@@ -1,3 +1,5 @@
+package com.fb_api_integration.freeadmin;
+
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
@@ -27,16 +29,16 @@ public class GuiForm extends JFrame {
 
     public GuiForm() {
 
-       // icon = new ImageIcon(this.getClass().getResource("/img.jpg"));              //Might be added later
-       // background = new JLabel(icon);
-       // background.setSize(1000,800);
-       // add(background);
+        //icon = new ImageIcon(this.getClass().getResource("/img.jpg"));              //Might be added later
+        //background = new JLabel(icon);
+        //background.setSize(1000,800);
+        //add(background);
 
         add(RootPanel);
         setTitle("Free Admin");
         setSize(1000, 800);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        final JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
 
         ExitButton.addActionListener(new ActionListener() {                             //Action Listener to Exit button

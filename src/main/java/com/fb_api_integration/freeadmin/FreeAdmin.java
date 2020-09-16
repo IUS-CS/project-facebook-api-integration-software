@@ -1,3 +1,5 @@
+package com.fb_api_integration.freeadmin;
+
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
