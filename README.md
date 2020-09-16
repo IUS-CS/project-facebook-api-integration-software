@@ -41,6 +41,6 @@ The source code and binary releases will be hosted on the IUS Computer Science G
 - **Project URL:** https://github.com/IUS-CS/project-facebook-api-integration-software
 
 ## Built With
-- Java SE JDK8u261 x86
+- Java SE JDK 8+
 - RestFB (simple and flexible Facebook Graph API client), https://restfb.com/
-- Netbeans 8.2 or IntelliJ IDEA IDE(tentitive)
+- Maven
