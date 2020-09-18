@@ -21,22 +21,25 @@ public class GuiForm extends JFrame {
     private JButton SelectFileButton;
     private JLabel HoursLabel;
     private JTextField HoursField;
+    private JLabel AccessTokenLabel;
+    private JTextField AccessTokenInput;
     private JFormattedTextField formattedTextField1;
     private ImageIcon icon;
     private JLabel background;
     private String str;
 
 
+
     public GuiForm() {
 
         //icon = new ImageIcon(this.getClass().getResource("/img.jpg"));              //Might be added later
         //background = new JLabel(icon);
-        //background.setSize(1000,800);
+        //background.setSize(640,480);
         //add(background);
 
         add(RootPanel);
         setTitle("Free Admin");
-        setSize(1000, 800);
+        setSize(640, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
@@ -59,7 +62,7 @@ public class GuiForm extends JFrame {
         PostButton.addActionListener(new ActionListener() {                         //Action Listener to post button
             @Override
             public void actionPerformed(ActionEvent event) {
-                String accessToken = "EAAXCZAYMmme4BAIUXvGREb5kvWUWzVGf7rt2EcCSdKv0ZAAPDCvtggmmiELxEaKriyPWxe3mgSLIiJlEGZCBPNZCM9Qyk7om0795AjjhSrSNCkm8yrclqDKcscICZBHwxWqs3lkd8EjqtBD1oyifQyQ8YmPvnXlJp6LluQnbyLBDj8pam2IV5t7ZBvOTiavs3iO44O4J9NiQZDZD";
+                String accessToken = AccessTokenInput.getText();
                 FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);  //Creating facebook access token
 
                 try {
