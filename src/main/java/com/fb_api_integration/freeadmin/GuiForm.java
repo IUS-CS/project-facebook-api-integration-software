@@ -37,7 +37,7 @@ public class GuiForm extends JFrame {
         add(RootPanel);
         setTitle("Free Admin");
         setSize(1000, 800);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
 
