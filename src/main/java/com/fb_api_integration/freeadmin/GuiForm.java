@@ -47,7 +47,6 @@ public class GuiForm extends JFrame {
         SelectFileButton.addActionListener(new ActionListener() {                  //Action Listener to file button
             @Override
             public void actionPerformed(ActionEvent event) {
-
                 jfc.showOpenDialog(null);
             }
         });//Select button action listener
@@ -71,7 +70,6 @@ public class GuiForm extends JFrame {
                         System.out.println("fb.com/" + publishMessageResponse.getId());
 
                         Thread.sleep(milliSecToHours);                        //Pause between each line
-
                     }//while
 
                     in.close();
