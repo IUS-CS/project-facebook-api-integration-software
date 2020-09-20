@@ -10,9 +10,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
 import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class GuiForm extends JFrame {
     private JPanel RootPanel;
@@ -28,10 +25,7 @@ public class GuiForm extends JFrame {
     private JLabel background;
     private String str;
 
-
-
     public GuiForm() {
-
         //icon = new ImageIcon(this.getClass().getResource("/img.jpg"));              //Might be added later
         //background = new JLabel(icon);
         //background.setSize(640,480);
@@ -42,7 +36,6 @@ public class GuiForm extends JFrame {
         setSize(640, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-
 
         ExitButton.addActionListener(new ActionListener() {                             //Action Listener to Exit button
             @Override
@@ -68,15 +61,11 @@ public class GuiForm extends JFrame {
                 try {
                     BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(jfc.getSelectedFile()), "UTF8"));
 
-
                     String hoursInString = HoursField.getText();                   //Getting hours input from user.
                     int hours = Integer.parseInt(hoursInString);                   //Parsing hours
                     int milliSecToHours = hours * 60 * 60 * 1000;                  //Converting hours to milliseconds
 
-
                     while ((str = in.readLine()) != null) {                        //While loop to read data line by line from selected file
-
-
                         FacebookType publishMessageResponse = fbClient.publish("me/feed", FacebookType.class,               //Post first line read
                                 Parameter.with("message", str));
                         System.out.println("fb.com/" + publishMessageResponse.getId());
@@ -84,27 +73,13 @@ public class GuiForm extends JFrame {
                         Thread.sleep(milliSecToHours);                        //Pause between each line
 
                     }//while
+
                     in.close();
-
-                }//Try
-
-                catch (UnsupportedEncodingException e)                      //Catch errors
-                {
-                    System.out.println(e.getMessage());
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
-                } catch (Exception e) {
+                } //Try
+                catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-
             }
         });//Post button action listener
-
-
     }//GuiForm()
-
 }//GuiForm
-
-
-
-
