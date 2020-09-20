@@ -14,7 +14,7 @@ It will connect to the Facebook platform server and automatically publish the de
 
 ## Merge Requests & Builds
 
-Merge requests should be open against the `master` branch with a proper description of changes. The naming convention will be: lastname-feature. At least a pier review is required before changes can be merged to the master branch.
+Merge requests should be opened against the `master` branch with a proper description of changes. The naming convention will be: lastname-feature. At least one peer review is required before changes can be merged to the master branch.
 
 ## Application and File Structure
 
