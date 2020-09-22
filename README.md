@@ -7,10 +7,14 @@ It will connect to the Facebook platform server and automatically publish the de
 
 ## Prerequisites
 
-* This section will update when more information is available.
+* Microsoft Windows 8.1 or newer 
+* A working Facebook developer account
+* Oracel JDK14u2 x64 or AdoptOpenJDK14u2 x86/x64
+* IntelliJ IDEA 2018.3.6 or newer in either Community Edition or Ultimate Edition
 
 ## Getting Started
-* This section will update when more information is available.
+
+* Please refer to the guide in /Docs/Howto-FB App and Access Token.md on Facebook app creation and access token generation 
 
 ## Merge Requests & Builds
 
@@ -41,6 +45,7 @@ The source code and binary releases will be hosted on the IUS Computer Science G
 - **Project URL:** https://github.com/IUS-CS/project-facebook-api-integration-software
 
 ## Built With
-- Java SE JDK 8+
+- Java SE JDK14u2
 - RestFB (simple and flexible Facebook Graph API client), https://restfb.com/
 - Maven
+- IntelliJ IDEA 2018.3.6 or newer
