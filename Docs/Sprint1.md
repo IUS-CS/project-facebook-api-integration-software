@@ -52,8 +52,8 @@ Members present:
   
   Points | Story
   -------|--------
-         | As a client, I want to publish links to sell and advertise my products.
-	 | As a client, I want to post pictures to timeline for new items in store.
-         | As a developer, I will program my software to publish automatically.
-	 | As a developer, I will create a feature that will post scheduled pictures.
-	 | As a developer, I want to make the software more user-friendly by adding menu bar.
+    4    | As a client, I want to publish links to sell and advertise my products.
+    5    | As a client, I want to post pictures to timeline for new items in store.
+    7    | As a developer, I will program my software to publish automatically.
+    5    | As a developer, I will create a feature that will post scheduled pictures.
+    3    | As a developer, I want to make the software more user-friendly by adding menu bar.
