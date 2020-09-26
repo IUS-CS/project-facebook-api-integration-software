@@ -57,5 +57,3 @@ Members present:
          | As a developer, I will program my software to publish automatically.
 	 | As a developer, I will create a feature that will post scheduled pictures.
 	 | As a developer, I want to make the software more user-friendly by adding menu bar.
-	 |
-	 |
