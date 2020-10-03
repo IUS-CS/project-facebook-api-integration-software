@@ -1,9 +1,6 @@
 package com.fb_api_integration.freeadmin;
 
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Parameter;
-import com.restfb.Version;
+import com.restfb.*;
 import com.restfb.types.FacebookType;
 
 import javax.swing.*;
@@ -14,28 +11,25 @@ import java.io.*;
 public class GuiForm extends JFrame {
     private JPanel RootPanel;
     private JButton ExitButton;
-    private JButton PostButton;
-    private JButton SelectFileButton;
+    private JButton SelectTextFileButton;
+    private JButton SelectImageFilesButton;
+    private JButton PostStatusButton;
+    private JButton PostImagesButton;
     private JLabel HoursLabel;
-    private JTextField HoursField;
     private JLabel AccessTokenLabel;
+    private JTextField HoursField;
     private JTextField AccessTokenInput;
-    private JFormattedTextField formattedTextField1;
-    private ImageIcon icon;
-    private JLabel background;
     private String str;
 
     public GuiForm() {
-        //icon = new ImageIcon(this.getClass().getResource("/img.jpg"));              //Might be added later
-        //background = new JLabel(icon);
-        //background.setSize(640,480);
-        //add(background);
 
         add(RootPanel);
         setTitle("Free Admin");
         setSize(640, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        final JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        final JFileChooser OneFileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        final JFileChooser multiFileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
 
         ExitButton.addActionListener(new ActionListener() {                             //Action Listener to Exit button
             @Override
@@ -44,21 +38,25 @@ public class GuiForm extends JFrame {
             }
         });//Exit button action listener
 
-        SelectFileButton.addActionListener(new ActionListener() {                  //Action Listener to file button
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                jfc.showOpenDialog(null);
-            }
-        });//Select button action listener
 
-        PostButton.addActionListener(new ActionListener() {                         //Action Listener to post button
+        SelectTextFileButton.addActionListener(new ActionListener() {                  //Action Listener to file button
             @Override
             public void actionPerformed(ActionEvent event) {
+                OneFileChooser.showOpenDialog(null);
+            }
+        });//Select text file button action listener
+
+
+        PostStatusButton.addActionListener(new ActionListener() {                         //Action Listener to post button
+            @Override
+            public void actionPerformed(ActionEvent event) {
+
                 String accessToken = AccessTokenInput.getText();
                 FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);  //Creating facebook access token
 
                 try {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(jfc.getSelectedFile()), "UTF8"));
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(OneFileChooser.getSelectedFile()), "UTF8"));
 
                     String hoursInString = HoursField.getText();                   //Getting hours input from user.
                     int hours = Integer.parseInt(hoursInString);                   //Parsing hours
@@ -78,6 +76,49 @@ public class GuiForm extends JFrame {
                     System.out.println(e.getMessage());
                 }
             }
-        });//Post button action listener
+        });//Post status button action listener
+
+
+        SelectImageFilesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                multiFileChooser.setMultiSelectionEnabled(true);
+                multiFileChooser.showOpenDialog(null);
+            }
+        });//Select image files button
+
+
+        PostImagesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String accessToken = AccessTokenInput.getText();
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);  //Creating facebook access token
+                File[] files = multiFileChooser.getSelectedFiles();                                //Store selected pictures in array
+
+                String hoursInString = HoursField.getText();                   //Getting hours input from user.
+                int hours = Integer.parseInt(hoursInString);                   //Parsing hours
+                int milliSecToHours = hours * 60 * 60 * 1000;                  //Converting hours to milliseconds
+
+                try {
+                    for (int i = 0; i < files.length; i++) {                    //Go through each picture
+
+                        FileInputStream fis = new FileInputStream(new File(String.valueOf(files[i])));      //File reader
+                        FacebookType publishMessageResponse = fbClient.publish("me/photos", FacebookType.class,
+                                BinaryAttachment.with("try", fis));
+
+                        System.out.println("fb.com/" + publishMessageResponse.getId());                     //Post pictures
+
+                        Thread.sleep(milliSecToHours);                                             //Pause between each picture
+                    }
+                }//try
+
+                catch (FileNotFoundException | InterruptedException ex) {
+                    ex.printStackTrace();
+                }//catch
+            }
+        });//Post images button action listener
+
+
     }//GuiForm()
 }//GuiForm
