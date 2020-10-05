@@ -26,15 +26,23 @@ public class GuiForm extends JFrame {
         add(RootPanel);
         setTitle("Free Admin");
         setSize(640, 480);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                exitForm();
+            }
+        });
+
         final JFileChooser OneFileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         final JFileChooser multiFileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
+        setupMenu();
 
         ExitButton.addActionListener(new ActionListener() {                             //Action Listener to Exit button
             @Override
             public void actionPerformed(ActionEvent event) {
-                System.exit(0);
+                exitForm();
             }
         });//Exit button action listener
 
@@ -121,4 +129,42 @@ public class GuiForm extends JFrame {
 
 
     }//GuiForm()
+
+    /**
+     *  Initialize Menubar
+     */
+    private void setupMenu() {
+        final JMenuBar menuBar = new JMenuBar();
+
+        // File Menu
+        JMenu fileMenu = new JMenu("File");
+
+        JMenuItem exitMenuItem = new JMenuItem("Exit");
+        exitMenuItem.addActionListener(e -> exitForm());
+        fileMenu.add(exitMenuItem);
+
+        menuBar.add(fileMenu);
+
+        // Help Menu
+        JMenu helpMenu = new JMenu("Help");
+
+        JMenuItem aboutMenuItem = new JMenuItem("About");
+        aboutMenuItem.addActionListener(e -> {
+            AboutDialog aboutDialog = new AboutDialog(this);
+            aboutDialog.pack();
+            aboutDialog.setVisible(true);
+        });
+        helpMenu.add(aboutMenuItem);
+
+        menuBar.add(helpMenu);
+
+        this.setJMenuBar(menuBar);
+    }
+
+    /**
+     * Action performed when exiting form
+     */
+    private void exitForm() {
+        System.exit(0);
+    }
 }//GuiForm
