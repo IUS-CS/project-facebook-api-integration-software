@@ -19,6 +19,8 @@ public class GuiForm extends JFrame {
     private JLabel AccessTokenLabel;
     private JTextField HoursField;
     private JTextField AccessTokenInput;
+    private JButton SelectVideoFilesButton;
+    private JButton PostVideosButton;
     private String str;
 
     public GuiForm() {
@@ -39,23 +41,23 @@ public class GuiForm extends JFrame {
 
         setupMenu();
 
-        ExitButton.addActionListener(new ActionListener() {                             //Action Listener to Exit button
+        ExitButton.addActionListener(new ActionListener() {                             //Exit Button
             @Override
             public void actionPerformed(ActionEvent event) {
                 exitForm();
             }
-        });//Exit button action listener
+        });//Exit Button action listener
 
 
-        SelectTextFileButton.addActionListener(new ActionListener() {                  //Action Listener to file button
+        SelectTextFileButton.addActionListener(new ActionListener() {                  //Select Text File Button
             @Override
             public void actionPerformed(ActionEvent event) {
                 OneFileChooser.showOpenDialog(null);
             }
-        });//Select text file button action listener
+        });//Select Text File Button action listener
 
 
-        PostStatusButton.addActionListener(new ActionListener() {                         //Action Listener to post button
+        PostStatusButton.addActionListener(new ActionListener() {                         //Post Status Button
             @Override
             public void actionPerformed(ActionEvent event) {
 
@@ -84,19 +86,19 @@ public class GuiForm extends JFrame {
                     System.out.println(e.getMessage());
                 }
             }
-        });//Post status button action listener
+        });//Post Status Button action listener
 
 
-        SelectImageFilesButton.addActionListener(new ActionListener() {
+        SelectImageFilesButton.addActionListener(new ActionListener() {     //Select Image Files Button
             @Override
             public void actionPerformed(ActionEvent e) {
                 multiFileChooser.setMultiSelectionEnabled(true);
                 multiFileChooser.showOpenDialog(null);
             }
-        });//Select image files button
+        });//Select Image Files Button action listener
 
 
-        PostImagesButton.addActionListener(new ActionListener() {
+        PostImagesButton.addActionListener(new ActionListener() {     //Post Images Button
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -125,8 +127,48 @@ public class GuiForm extends JFrame {
                     ex.printStackTrace();
                 }//catch
             }
-        });//Post images button action listener
+        });//Post Images Button action listener
 
+
+        SelectVideoFilesButton.addActionListener(new ActionListener() {    //Select Video Files Button
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                multiFileChooser.setMultiSelectionEnabled(true);
+                multiFileChooser.showOpenDialog(null);
+            }
+        });//Select Video Files Button action listener
+
+
+        PostVideosButton.addActionListener(new ActionListener() {       //Post Videos Button
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String accessToken = AccessTokenInput.getText();
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);  //Creating facebook access token
+                File[] files = multiFileChooser.getSelectedFiles();                                //Store selected videos in array
+
+                String hoursInString = HoursField.getText();                   //Getting hours input from user.
+                int hours = Integer.parseInt(hoursInString);                   //Parsing hours
+                int milliSecToHours = hours * 60 * 60 * 1000;                  //Converting hours to milliseconds
+
+                try {
+                    for (int i = 0; i < files.length; i++) {                    //Go through each video
+
+                        FileInputStream fis = new FileInputStream(new File(String.valueOf(files[i])));      //File reader
+                        FacebookType publishMessageResponse = fbClient.publish("me/videos", FacebookType.class,
+                                BinaryAttachment.with("try.mp4", fis));
+
+                        System.out.println("fb.com/" + publishMessageResponse.getId());                     //Post videos
+
+                        Thread.sleep(milliSecToHours);                                             //Pause between each video
+                    }
+                }//try
+
+                catch (FileNotFoundException | InterruptedException ex) {
+                    ex.printStackTrace();
+                }//catch
+            }
+        });//Post Videos Button action listener
 
     }//GuiForm()
 
