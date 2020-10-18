@@ -1,8 +1,5 @@
 package com.fb_api_integration.freeadmin;
 
-import com.restfb.*;
-import com.restfb.types.FacebookType;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.event.*;
@@ -60,24 +57,20 @@ public class GuiForm extends JFrame {
         PostStatusButton.addActionListener(new ActionListener() {                         //Post Status Button
             @Override
             public void actionPerformed(ActionEvent event) {
-
                 String accessToken = AccessTokenInput.getText();
-                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);  //Creating facebook access token
+                Post post = new Post(accessToken, PostType.FEED);
+
+                long millis = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
 
                 try {
-
                     BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(OneFileChooser.getSelectedFile()), "UTF8"));
 
-                    String hoursInString = HoursField.getText();                   //Getting hours input from user.
-                    int hours = Integer.parseInt(hoursInString);                   //Parsing hours
-                    int milliSecToHours = hours * 60 * 60 * 1000;                  //Converting hours to milliseconds
-
                     while ((str = in.readLine()) != null) {                        //While loop to read data line by line from selected file
-                        FacebookType publishMessageResponse = fbClient.publish("me/feed", FacebookType.class,               //Post first line read
-                                Parameter.with("message", str));
-                        System.out.println("fb.com/" + publishMessageResponse.getId());
+                        post.setMessage(str);
+                        String id = post.publish();
+                        System.out.println("fb.com/" + id);
 
-                        Thread.sleep(milliSecToHours);                        //Pause between each line
+                        Thread.sleep(millis);                        //Pause between each line
                     }//while
 
                     in.close();
@@ -101,29 +94,24 @@ public class GuiForm extends JFrame {
         PostImagesButton.addActionListener(new ActionListener() {     //Post Images Button
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String accessToken = AccessTokenInput.getText();
-                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);  //Creating facebook access token
-                File[] files = multiFileChooser.getSelectedFiles();                                //Store selected pictures in array
+                Post post = new Post(accessToken, PostType.PHOTOS);
 
-                String hoursInString = HoursField.getText();                   //Getting hours input from user.
-                int hours = Integer.parseInt(hoursInString);                   //Parsing hours
-                int milliSecToHours = hours * 60 * 60 * 1000;                  //Converting hours to milliseconds
+                long millis = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+
+                File[] files = multiFileChooser.getSelectedFiles();                                //Store selected pictures in array
 
                 try {
                     for (int i = 0; i < files.length; i++) {                    //Go through each picture
+                        post.setAttachment(files[i]);
 
-                        FileInputStream fis = new FileInputStream(new File(String.valueOf(files[i])));      //File reader
-                        FacebookType publishMessageResponse = fbClient.publish("me/photos", FacebookType.class,
-                                BinaryAttachment.with("try", fis));
+                        String id = post.publish();
+                        System.out.println("fb.com/" + id);
 
-                        System.out.println("fb.com/" + publishMessageResponse.getId());                     //Post pictures
-
-                        Thread.sleep(milliSecToHours);                                             //Pause between each picture
+                        Thread.sleep(millis);                                             //Pause between each picture
                     }
                 }//try
-
-                catch (FileNotFoundException | InterruptedException ex) {
+                catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }//catch
             }
@@ -142,35 +130,38 @@ public class GuiForm extends JFrame {
         PostVideosButton.addActionListener(new ActionListener() {       //Post Videos Button
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String accessToken = AccessTokenInput.getText();
-                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);  //Creating facebook access token
-                File[] files = multiFileChooser.getSelectedFiles();                                //Store selected videos in array
+                Post post = new Post(accessToken, PostType.VIDEOS);
 
-                String hoursInString = HoursField.getText();                   //Getting hours input from user.
-                int hours = Integer.parseInt(hoursInString);                   //Parsing hours
-                int milliSecToHours = hours * 60 * 60 * 1000;                  //Converting hours to milliseconds
+                long millis = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+
+                File[] files = multiFileChooser.getSelectedFiles();                                //Store selected videos in array
 
                 try {
                     for (int i = 0; i < files.length; i++) {                    //Go through each video
+                        post.setAttachment(files[i]);
 
-                        FileInputStream fis = new FileInputStream(new File(String.valueOf(files[i])));      //File reader
-                        FacebookType publishMessageResponse = fbClient.publish("me/videos", FacebookType.class,
-                                BinaryAttachment.with("try.mp4", fis));
+                        String id = post.publish();
+                        System.out.println("fb.com/" + id);
 
-                        System.out.println("fb.com/" + publishMessageResponse.getId());                     //Post videos
-
-                        Thread.sleep(milliSecToHours);                                             //Pause between each video
+                        Thread.sleep(millis);                                              //Pause between each video
                     }
                 }//try
-
-                catch (FileNotFoundException | InterruptedException ex) {
+                catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }//catch
             }
         });//Post Videos Button action listener
 
     }//GuiForm()
+
+    /**
+     * Convert hours to milliseconds
+     * @param hours hours to convert
+     */
+    private long convertHoursToMillis(int hours) {
+        return hours * 60 * 60 * 1000;
+    }
 
     /**
      *  Initialize Menubar
