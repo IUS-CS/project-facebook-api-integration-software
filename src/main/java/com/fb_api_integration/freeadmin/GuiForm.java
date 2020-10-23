@@ -173,7 +173,12 @@ public class GuiForm extends JFrame {
         JMenu fileMenu = new JMenu("File");
 
         JMenuItem exitMenuItem = new JMenuItem("Exit");
-        exitMenuItem.addActionListener(e -> exitForm());
+        exitMenuItem.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exitForm();
+            }
+        });
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
@@ -182,10 +187,13 @@ public class GuiForm extends JFrame {
         JMenu helpMenu = new JMenu("Help");
 
         JMenuItem aboutMenuItem = new JMenuItem("About");
-        aboutMenuItem.addActionListener(e -> {
-            AboutDialog aboutDialog = new AboutDialog(this);
-            aboutDialog.pack();
-            aboutDialog.setVisible(true);
+        aboutMenuItem.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AboutDialog aboutDialog = new AboutDialog(GuiForm.this);
+                aboutDialog.pack();
+                aboutDialog.setVisible(true);
+            }
         });
         helpMenu.add(aboutMenuItem);
 
