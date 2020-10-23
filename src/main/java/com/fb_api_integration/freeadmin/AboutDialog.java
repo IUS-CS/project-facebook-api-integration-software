@@ -31,7 +31,12 @@ public class AboutDialog extends JDialog {
             }
         });
 
-        buttonOK.addActionListener(e -> onOK());
+        buttonOK.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onOK();
+            }
+        });
 
         homepageLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         homepageLabel.addMouseListener(new MouseAdapter() {
@@ -50,8 +55,12 @@ public class AboutDialog extends JDialog {
         });
 
         // call onOK() on ESCAPE
-        contentPane.registerKeyboardAction(e -> onOK(),
-                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onOK();
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     /**
