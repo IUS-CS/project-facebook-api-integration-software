@@ -15,7 +15,7 @@ Members present:
   
   * We were able to implement post video feature.
   * We have fixed compatibility issues.
-  * We have identified the design pattern and improve it.
+  * We have identified the design pattern and improved it.
   * We have moved the business logic out of the form class.
 
  
@@ -52,6 +52,6 @@ Members present:
   Points | Story
   -------|--------
     2    | As a client, I want to be able to make a post at certain hour and minutes.
-    2    | As a client, I want the interface to be more simpler by removing the exit button and fix resolution.
-    2    | As a developer, I will add testing.md file that explains testing patterns seen in software. 
+    2    | As a client, I want the interface to be simpler by removing the exit button and fixing the resolution.
+    2    | As a developer, I will add testing.md file that describes how the software is being tested. 
     3    | As a developer, I will implement a queue for posting features.
