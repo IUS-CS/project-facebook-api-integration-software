@@ -15,14 +15,20 @@ If you have never created apps on the Facebook platform before, you'll need to c
 An access token generated using this method expires after approximately one hour. Please read the section following on how to obtain an extended access token.
 
 1. Navigate to Facebook Graph API Explorer at https://developers.facebook.com/tools/explorer/
-2. Select "Get Page Access Token" and follow the instructions to create/select a page. Note: You might need to repeat instructions 1 and 2 after creating a new page.
-![](images/fbdoc_1.png)
+2. Select "Get Page Access Token" and follow the instructions to create/select a page. Note: You might need to repeat instructions 1 and 2 after creating a new page. 
+
+    ![](images/fbdoc_1.png)
+
 3. You may ignore the following warning if shown.
-![](images/fbdoc_2.png)
+
+    ![](images/fbdoc_2.png)
+
 4. Under "Add a Permission", make sure "pages_read_engagement" and "pages_manage_posts" are selected.
 5. Click "Generate Access Token" and follow the instructions.
 6. Click on the page under "Page Access Tokens".
-![](images/fbdoc_3.png)
+
+    ![](images/fbdoc_3.png)
+
 7. Copy the access token.
 
 ## Generating an Extended Access Token
