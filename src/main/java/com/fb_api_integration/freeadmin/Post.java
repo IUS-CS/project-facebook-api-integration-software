@@ -12,10 +12,11 @@ import java.nio.file.Files;
  */
 public class Post {
 
-    private FacebookClient fbClient;
-    private PostType postType;
+    private final FacebookClient fbClient;
+    private final PostType postType;
     private String message = "";
     private BinaryAttachment attachment = null;
+    private long delay = 0;
 
     /**
      * Creates a new post
@@ -26,6 +27,22 @@ public class Post {
         fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
 
         this.postType = postType;
+    }
+
+    /**
+     * Set the delay before posting
+     * @param delay delay before posting
+     */
+    public void setDelay(long delay) {
+        this.delay = delay;
+    }
+
+    /**
+     * Get the delay before posting
+     * @return delay before posting
+     */
+    public long getDelay() {
+        return delay;
     }
 
     /**
