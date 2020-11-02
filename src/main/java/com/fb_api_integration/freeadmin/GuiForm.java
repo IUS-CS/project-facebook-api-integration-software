@@ -7,7 +7,7 @@ import java.io.*;
 
 public class GuiForm extends JFrame {
     private JPanel RootPanel;
-    private JButton ExitButton;
+    //private JButton ExitButton;
     private JButton SelectTextFileButton;
     private JButton SelectImageFilesButton;
     private JButton PostStatusButton;
@@ -25,6 +25,7 @@ public class GuiForm extends JFrame {
         add(RootPanel);
         setTitle("Free Admin");
         setSize(640, 480);
+        setResizable(false); //make the frame not resizable
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -38,12 +39,12 @@ public class GuiForm extends JFrame {
 
         setupMenu();
 
-        ExitButton.addActionListener(new ActionListener() {                             //Exit Button
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                exitForm();
-            }
-        });//Exit Button action listener
+        //ExitButton.addActionListener(new ActionListener() {                             //Exit Button
+        //    @Override
+        //    public void actionPerformed(ActionEvent event) {
+        //        exitForm();
+        //    }
+        //});//Exit Button action listener
 
 
         SelectTextFileButton.addActionListener(new ActionListener() {                  //Select Text File Button
