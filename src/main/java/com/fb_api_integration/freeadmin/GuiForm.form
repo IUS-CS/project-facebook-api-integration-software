@@ -3,46 +3,19 @@
   <grid id="27dc6" binding="RootPanel" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="16" y="43" width="702" height="377"/>
+      <xy x="16" y="43" width="1024" height="600"/>
     </constraints>
     <properties>
       <background color="-2899201"/>
+      <inheritsPopupMenu value="true"/>
+      <maximumSize width="1024" height="600"/>
+      <minimumSize width="1024" height="600"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="714dc" class="javax.swing.JButton" binding="ExitButton">
-        <constraints>
-          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false">
-            <maximum-size width="128" height="32"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Exit"/>
-        </properties>
-      </component>
-      <component id="aeb10" class="javax.swing.JTextField" binding="HoursField">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="2b51a" class="javax.swing.JLabel" binding="HoursLabel">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Book Antiqua" size="18" style="1"/>
-          <foreground color="-14201669"/>
-          <text value="Every how many hours?"/>
-        </properties>
-      </component>
       <component id="f3538" class="javax.swing.JButton" binding="PostStatusButton">
         <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="2" use-parent-layout="false">
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false">
             <maximum-size width="128" height="32"/>
           </grid>
         </constraints>
@@ -52,7 +25,7 @@
       </component>
       <component id="38c94" class="javax.swing.JLabel" binding="AccessTokenLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Book Antiqua" size="18" style="1"/>
@@ -60,56 +33,86 @@
           <text value="Enter Access Token"/>
         </properties>
       </component>
-      <component id="ade95" class="javax.swing.JButton" binding="SelectTextFileButton">
-        <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Select Text File"/>
-        </properties>
-      </component>
       <component id="dc2d3" class="javax.swing.JTextField" binding="AccessTokenInput">
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
+            <maximum-size width="600" height="-1"/>
           </grid>
         </constraints>
         <properties>
           <text value=""/>
         </properties>
       </component>
-      <component id="79c93" class="javax.swing.JButton" binding="SelectImageFilesButton">
+      <component id="2b51a" class="javax.swing.JLabel" binding="HoursLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Select Image Files"/>
-        </properties>
-      </component>
-      <component id="ac64f" class="javax.swing.JButton" binding="PostImagesButton">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <maximum-size width="128" height="32"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Post Pictures"/>
+          <font name="Book Antiqua" size="18" style="1"/>
+          <foreground color="-14201669"/>
+          <text value="Every how many hours?"/>
         </properties>
       </component>
       <component id="6675f" class="javax.swing.JButton" binding="SelectVideoFilesButton">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="128" height="32"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Select Video Files (.mp4)"/>
         </properties>
       </component>
+      <component id="aeb10" class="javax.swing.JTextField" binding="HoursField">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+            <maximum-size width="600" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="ade95" class="javax.swing.JButton" binding="SelectTextFileButton">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="1" use-parent-layout="false">
+            <maximum-size width="128" height="32"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Select Text File"/>
+        </properties>
+      </component>
+      <component id="79c93" class="javax.swing.JButton" binding="SelectImageFilesButton">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="128" height="32"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Select Image Files"/>
+        </properties>
+      </component>
       <component id="fa397" class="javax.swing.JButton" binding="PostVideosButton">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="128" height="32"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Post Videos"/>
+        </properties>
+      </component>
+      <component id="ac64f" class="javax.swing.JButton" binding="PostImagesButton">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <maximum-size width="128" height="32"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Post Pictures"/>
         </properties>
       </component>
     </children>
