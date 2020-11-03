@@ -18,7 +18,6 @@ public class AppTest
     public void TitleTest()
     {
      GuiForm TitleObject = new GuiForm();
-        TitleObject.setTitle("Free Admin");
         assertEquals("Free Admin", TitleObject.getTitle());
     }
 
