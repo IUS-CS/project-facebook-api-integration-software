@@ -62,8 +62,8 @@ public class GuiForm extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 String accessToken = AccessTokenInput.getText();
 
-                long HoursDelay = convertMillisToHours(Integer.parseInt(HoursField.getText()));
-                long MinutesDelay = convertMillisToMinutes(Integer.parseInt(MinutesField.getText()));
+                long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
                 long delay = HoursDelay + MinutesDelay;
 
                 try {
@@ -103,8 +103,8 @@ public class GuiForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String accessToken = AccessTokenInput.getText();
 
-                long HoursDelay = convertMillisToHours(Integer.parseInt(HoursField.getText()));
-                long MinutesDelay = convertMillisToMinutes(Integer.parseInt(MinutesField.getText()));
+                long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
                 long delay = HoursDelay + MinutesDelay;
 
                 File[] files = multiFileChooser.getSelectedFiles();                                //Store selected pictures in array
@@ -137,8 +137,8 @@ public class GuiForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String accessToken = AccessTokenInput.getText();
 
-                long HoursDelay = convertMillisToHours(Integer.parseInt(HoursField.getText()));
-                long MinutesDelay = convertMillisToMinutes(Integer.parseInt(MinutesField.getText()));
+                long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
                 long delay = HoursDelay + MinutesDelay;
 
                 File[] files = multiFileChooser.getSelectedFiles();                                //Store selected videos in array
@@ -162,8 +162,13 @@ public class GuiForm extends JFrame {
      * Convert hours to milliseconds
      * @param hours hours to convert
      */
-    private long convertMillisToHours(int hours) { return hours * 60 * 60 * 1000; }
-    private long convertMillisToMinutes(int minutes) { return minutes * 60 * 1000; }
+    private long convertHoursToMillis(int hours) { return hours * 60 * 60 * 1000; }
+    
+    /**
+     * Convert minutes to milliseconds
+     * @param hours minutes to convert
+     */
+    private long convertMinutesToMillis(int minutes) { return minutes * 60 * 1000; }
 
 
     /**
