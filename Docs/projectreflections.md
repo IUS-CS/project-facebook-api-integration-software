@@ -12,7 +12,7 @@
 
 
 
- #### JamesSchlesener
+ #### James Schlesener
 
 My experience with this project has been good.  I have learned how to use Git and Github when working on a project as a
 team.  I have primarily reviewed code and proofread documents that my teammates have developed.  I created our team

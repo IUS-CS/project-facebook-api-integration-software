@@ -43,4 +43,3 @@ Members present:
   Points | Story
   -------|--------
     3    | As a developer, I will make sure there is unit testing and mock testing for all of the code.
-
