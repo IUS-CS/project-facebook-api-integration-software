@@ -15,7 +15,7 @@ with a team and keep track of the code in a proper timing. The tasks I accomplis
 with the effort of my team members include: software planning, analyzing and designing which include:
 the buttons and their functionalities, the initial graphical user interface, and implemented code for each component.
 I have also added unit test for the software main window before we added our methods.
-I participated to write the required documents for our software. 
+I participated to write the required documents that describe our software. 
 
 
  #### James Schlesener
