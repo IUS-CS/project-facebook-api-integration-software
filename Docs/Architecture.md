@@ -66,7 +66,7 @@ Each feature will perform an action that will interact with the server.
 
 * Methods programmed to work based on the user selection.
 
-* Methods include: Select text file, Select image files, two post buttons, and a text input from user to schedule time.
+* Methods include: select text file, select image files, select video files and three post buttons. Integer text input from user to schedule time.
 
 
 ## 5 Implementation View
