@@ -2,6 +2,7 @@ package com.fb_api_integration.freeadmin;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
@@ -18,7 +19,12 @@ public class GuiForm extends JFrame {
     private JTextField AccessTokenInput;
     private JButton SelectVideoFilesButton;
     private JButton PostVideosButton;
+    private JTextField MinutesField;
+    private JLabel MinutesLabel;
     private String str;
+
+
+
 
     public GuiForm() {
 
@@ -59,24 +65,28 @@ public class GuiForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 String accessToken = AccessTokenInput.getText();
-                Post post = new Post(accessToken, PostType.FEED);
 
-                long millis = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
+                long delay = HoursDelay + MinutesDelay;
 
                 try {
                     BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(OneFileChooser.getSelectedFile()), "UTF8"));
 
                     while ((str = in.readLine()) != null) {                        //While loop to read data line by line from selected file
+                        Post post = new Post(accessToken, PostType.FEED);
                         post.setMessage(str);
-                        String id = post.publish();
-                        System.out.println("fb.com/" + id);
 
-                        Thread.sleep(millis);                        //Pause between each line
-                    }//while
+                        if (!PostQueue.getInstance().isEmpty()) { // No delay for the first post
+                            post.setDelay(delay);
+                        }
+
+                        PostQueue.getInstance().enqueue(post);
+                    } //while
 
                     in.close();
                 } //Try
-                catch (Exception e) {
+                catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
             }
@@ -96,25 +106,23 @@ public class GuiForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String accessToken = AccessTokenInput.getText();
-                Post post = new Post(accessToken, PostType.PHOTOS);
 
-                long millis = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
+                long delay = HoursDelay + MinutesDelay;
 
                 File[] files = multiFileChooser.getSelectedFiles();                                //Store selected pictures in array
 
-                try {
-                    for (int i = 0; i < files.length; i++) {                    //Go through each picture
-                        post.setAttachment(files[i]);
+                for (int i = 0; i < files.length; i++) {                    //Go through each picture
+                    Post post = new Post(accessToken, PostType.PHOTOS);
+                    post.setAttachment(files[i]);
 
-                        String id = post.publish();
-                        System.out.println("fb.com/" + id);
-
-                        Thread.sleep(millis);                                             //Pause between each picture
+                    if (!PostQueue.getInstance().isEmpty()) { // No delay for the first post
+                        post.setDelay(delay);
                     }
-                }//try
-                catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }//catch
+
+                    PostQueue.getInstance().enqueue(post);
+                }
             }
         });//Post Images Button action listener
 
@@ -132,25 +140,23 @@ public class GuiForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String accessToken = AccessTokenInput.getText();
-                Post post = new Post(accessToken, PostType.VIDEOS);
 
-                long millis = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
+                long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
+                long delay = HoursDelay + MinutesDelay;
 
                 File[] files = multiFileChooser.getSelectedFiles();                                //Store selected videos in array
 
-                try {
-                    for (int i = 0; i < files.length; i++) {                    //Go through each video
-                        post.setAttachment(files[i]);
+                for (int i = 0; i < files.length; i++) {                    //Go through each video
+                    Post post = new Post(accessToken, PostType.VIDEOS);
+                    post.setAttachment(files[i]);
 
-                        String id = post.publish();
-                        System.out.println("fb.com/" + id);
-
-                        Thread.sleep(millis);                                              //Pause between each video
+                    if (!PostQueue.getInstance().isEmpty()) { // No delay for the first post
+                        post.setDelay(delay);
                     }
-                }//try
-                catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }//catch
+
+                    PostQueue.getInstance().enqueue(post);
+                }
             }
         });//Post Videos Button action listener
 
@@ -160,9 +166,14 @@ public class GuiForm extends JFrame {
      * Convert hours to milliseconds
      * @param hours hours to convert
      */
-    private long convertHoursToMillis(int hours) {
-        return hours * 60 * 60 * 1000;
-    }
+    private long convertHoursToMillis(int hours) { return hours * 60 * 60 * 1000; }
+    
+    /**
+     * Convert minutes to milliseconds
+     * @param hours minutes to convert
+     */
+    private long convertMinutesToMillis(int minutes) { return minutes * 60 * 1000; }
+
 
     /**
      *  Initialize Menubar
@@ -202,6 +213,7 @@ public class GuiForm extends JFrame {
 
         this.setJMenuBar(menuBar);
     }
+
 
     /**
      * Action performed when exiting form
