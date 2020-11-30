@@ -21,7 +21,7 @@ Members present:
  
   Here are screenshots of what we did:
   
-![](images/interface4.jpg)
+  ![](images/interface4.png)
 
 
   ## Retro
