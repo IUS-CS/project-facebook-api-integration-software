@@ -2,6 +2,7 @@ package com.fb_api_integration.freeadmin;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
@@ -21,6 +22,9 @@ public class GuiForm extends JFrame {
     private JTextField MinutesField;
     private JLabel MinutesLabel;
     private String str;
+
+
+
 
     public GuiForm() {
 
@@ -209,6 +213,7 @@ public class GuiForm extends JFrame {
 
         this.setJMenuBar(menuBar);
     }
+
 
     /**
      * Action performed when exiting form
