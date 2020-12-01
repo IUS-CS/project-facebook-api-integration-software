@@ -1,5 +1,5 @@
 # FreeAdmin Software Architecture Document
-Version 0.2 (Draft)
+Version 0.2
 
   * [1. Introduction](#1-introduction)
     + [1.1 Purpose](#11-purpose)
