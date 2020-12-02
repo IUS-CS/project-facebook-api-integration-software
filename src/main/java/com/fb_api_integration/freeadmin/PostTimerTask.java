@@ -21,7 +21,11 @@ public class PostTimerTask extends TimerTask {
         if (currentMs > lastPostMs + queue.getDelayBeforeNext()) {
             Post post = queue.dequeue();
             String id = post.publish();
-            System.out.println("Published post " + id);
+            if (id != null) {
+                System.out.println("Published post " + id);
+            } else {
+                System.out.println("Failed to publish post");
+            }
 
             lastPostMs = currentMs;
         }
