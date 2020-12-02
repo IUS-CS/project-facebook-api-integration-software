@@ -1,5 +1,6 @@
 package com.fb_api_integration.freeadmin;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -66,5 +67,21 @@ public class PostQueue {
         }
 
         return queue.peek().getDelay();
+    }
+
+    /**
+     * Get the iterator for the queue
+     * @return Post iterator for queue
+     */
+    public Iterator<Post> getIterator() {
+        return queue.iterator();
+    }
+
+    /**
+     * Get the size of the queue
+     * @return size of queue
+     */
+    public int getSize() {
+        return queue.size();
     }
 }

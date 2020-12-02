@@ -72,18 +72,46 @@ public class Post {
     public String publish() {
         FacebookType publishMessageResponse = new FacebookType();
 
-        switch (postType) {
-            case FEED:
-                publishMessageResponse = fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", message));
-                break;
-            case PHOTOS:
-                publishMessageResponse = fbClient.publish("me/photos", FacebookType.class, attachment);
-                break;
-            case VIDEOS:
-                publishMessageResponse = fbClient.publish("me/videos", FacebookType.class, attachment);
-                break;
+        try {
+            switch (postType) {
+                case FEED:
+                    publishMessageResponse = fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", message));
+                    break;
+                case PHOTOS:
+                    publishMessageResponse = fbClient.publish("me/photos", FacebookType.class, attachment);
+                    break;
+                case VIDEOS:
+                    publishMessageResponse = fbClient.publish("me/videos", FacebookType.class, attachment);
+                    break;
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
         return publishMessageResponse.getId();
+    }
+
+    /**
+     * Gets the post as a string
+     * @return representation of post as a string
+     */
+    @Override
+    public String toString() {
+        String s = "";
+
+        switch (postType) {
+            case FEED:
+                s = message;
+                break;
+            case PHOTOS:
+                s = "Photo";
+                break;
+            case VIDEOS:
+                s = "Video";
+                break;
+        }
+
+        return s;
     }
 }

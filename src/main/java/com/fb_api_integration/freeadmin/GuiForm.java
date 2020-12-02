@@ -22,7 +22,7 @@ public class GuiForm extends JFrame {
     private JTextField MinutesField;
     private JLabel MinutesLabel;
     private String str;
-
+    private QueueDialog queueDialog = new QueueDialog(this);
 
 
 
@@ -44,6 +44,8 @@ public class GuiForm extends JFrame {
         final JFileChooser multiFileChooser = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
         setupMenu();
+
+        queueDialog.setVisible(false);
 
         //ExitButton.addActionListener(new ActionListener() {                             //Exit Button
         //    @Override
@@ -194,6 +196,20 @@ public class GuiForm extends JFrame {
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
+
+        // View Menu
+        JMenu viewMenu = new JMenu("View");
+
+        JMenuItem showQueueMenuItem = new JMenuItem("Show Queue");
+        showQueueMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                queueDialog.setVisible(true);
+            }
+        });
+        viewMenu.add(showQueueMenuItem);
+
+        menuBar.add(viewMenu);
 
         // Help Menu
         JMenu helpMenu = new JMenu("Help");
