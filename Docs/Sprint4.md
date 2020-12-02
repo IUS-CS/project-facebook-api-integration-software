@@ -1,6 +1,6 @@
 **Sprint 4 Ceremony Minutes**
   
-Date: xx-xx-2020
+Date: 11-30-2020
 
 Members present:
 
@@ -48,3 +48,4 @@ Members present:
   -------|--------
     3    | As a developer, I will make sure there is unit testing and mock testing for all of the code.
     3    | As a developer, I will make the Graphic User Interface more user-friendly.
+    3    | As a developer, I will make the documentation organized and add testing.md and projectreflections.md files. 

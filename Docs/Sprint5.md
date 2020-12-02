@@ -1,6 +1,6 @@
 **Sprint 5 Ceremony Minutes**
   
-Date: mm-dd-yyyy
+Date: 12-01-2020
 
 Members present:
 
@@ -13,11 +13,10 @@ Members present:
   
   This sprint, we completed:
   
-  * 
+  * will make sure there is unit testing and mock testing for all of the code.
+  * make the Graphic User Interface more user-friendly.
+  * Make all the documentation organized and add testing.md and projectreflections.md files. 
 
- 
-  Here are screenshots of what we did:
-  
 
 
   ## Retro
@@ -26,20 +25,10 @@ Members present:
   
   ### Pros
   
-  * 
+  * We were able to assign tasks equally among the group members.
   
   ### Cons
   
-  * 
+  * We do not have anything else to add, so we had to pay attention to the effort spent on the remainning tasks.
  
-  
-  ### Actionable Commitments
-  
-  * 
 
-  
-  ## Planning
-  
-  Points | Story
-  -------|--------
-         | 
