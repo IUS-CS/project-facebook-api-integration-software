@@ -8,7 +8,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
 {
     /**
      * Rigorous Test :-)
@@ -17,22 +17,8 @@ public class AppTest
     @Test
     public void TitleTest()
     {
-     GuiForm TitleObject = new GuiForm();
+        GuiForm TitleObject = new GuiForm();
         assertEquals("Free Admin", TitleObject.getTitle());
-    }
-
-    @Test
-    public void RootPanelTest()
-    {
-        GuiForm RootObject = new GuiForm();
-        RootObject.getRootPane();
-        assertTrue(true);
-    }
-
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
     }
 
 }
