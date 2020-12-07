@@ -12,13 +12,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.internal.stubbing.BaseStubbing;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.io.IOException;
+import java.io.File;
+import java.nio.file.Files;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PostTest {
-
-    @Mock
-    private FacebookType publishMessageResponse = new FacebookType();
 
     @Mock
     private FacebookClient fbClient = new DefaultFacebookClient("0", Version.LATEST);
@@ -36,6 +38,21 @@ public class PostTest {
         assertEquals(123, post.getDelay());
     }
 
+    @Test
+    public void setMessageTest() {
+        Post post1 = new Post(fbClient, PostType.FEED);
+        post1.setMessage("test message");
+        assertEquals("test message", post1.toString());
+    }
+
+    @Test
+    public void setAttachmentTest() {
+        File file = new File("abc");
+        postMock = new Post(fbClient, PostType.PHOTOS);
+        //test invalid file throw exception
+        postMock.setAttachment(file);
+    }
+
     @Ignore
     @Test
     public void publishTest() {
@@ -46,7 +63,6 @@ public class PostTest {
         when(fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", "test message"))).thenReturn(publishResponse);
         when(fbClient.publish("me/photos", FacebookType.class, attachment)).thenReturn(publishResponse);
         when(fbClient.publish("me/videos", FacebookType.class, attachment)).thenReturn(publishResponse);
-        when(publishMessageResponse.getId()).thenReturn("Post Successful");
 
         postMock = new Post(fbClient, PostType.PHOTOS);
         assertEquals("Post Successful", postMock.publish());

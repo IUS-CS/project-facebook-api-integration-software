@@ -14,7 +14,6 @@ public class Post {
 
     private final FacebookClient fbClient;
     private final PostType postType;
-    private FacebookType publishMessageResponse;
     private String message = "";
     private BinaryAttachment attachment = null;
     private long delay = 0;
@@ -70,7 +69,7 @@ public class Post {
      * @return ID of the post
      */
     public String publish() {
-        publishMessageResponse = new FacebookType();
+        FacebookType publishMessageResponse = new FacebookType();
         try {
             switch (postType) {
                 case FEED:
