@@ -12,12 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.internal.stubbing.BaseStubbing;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.io.IOException;
 import java.io.File;
-import java.nio.file.Files;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PostTest {
