@@ -91,6 +91,7 @@ Merge requests should be opened against the `master` branch with a proper descri
 - Open source online Markdown editor by Pandao: ** https://pandao.github.io/editor.md/en.html
 - RestFB, a simple and flexible Facebook Graph API client, ** https://restfb.com/
 - Apache Maven, a software project management and comprehension tool ** https://maven.apache.org/
+- Mockito, a Java-based mocking framework used for unit testing of Java applications. ** https://site.mockito.org/
 
 
 ## 11. Revision History
@@ -102,5 +103,6 @@ Merge requests should be opened against the `master` branch with a proper descri
 | 11/19/2020  | 0.4  | Revised the sections and updated TOC  | Lu  |
 | 12/06/2020  | 0.5  | Updated and reorgnized the sections  | Lu  |
 | 12/07/2020  | 0.6  | Added reference to testing.md and updated TOC  | Lu  |
+| 12/07/2020  | 0.7  | Added Mockito to Resources and Credits  | Schlesener  |
 |   |   |   |   |
 |   |   |   |   |
