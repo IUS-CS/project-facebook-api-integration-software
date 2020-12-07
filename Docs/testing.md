@@ -25,12 +25,12 @@ Manual testing will also be completed on the GUI by following the steps below:
     
 ### 2.2 Perform GUI tests
   - Drop down menu
-    ######File
+    - File
       - Click on "Exit" and FreeAdmin software should terminate.
-    ######View
+    - View
       - Click on "Show Queue" and a new window should appear showing a table with 3 columns; Position, Content, and Delay (Minutes)
       - Click the "X" in the upper right hand corner of this window, and the "Show Queue" window should close.
-    ######Help
+    - Help
       - Click on "About" and a new window should appear showing the software name "Free Admin", a link to the software development site on github.com, the authors of the software, and a link to the MIT license.
       - The "About" window should close by clicking the "OK" button located in the center of the bottom of this window or the "X" in the upper right hand corner of this window.
   - The 3 input text boxes should all be able to accept text characters.
