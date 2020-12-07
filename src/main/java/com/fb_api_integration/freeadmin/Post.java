@@ -20,12 +20,11 @@ public class Post {
 
     /**
      * Creates a new post
-     * @param accessToken access token to use for publishing
+     * @param fbClient Facebook Client to use for publishing
      * @param postType type of post to publish
      */
-    public Post(String accessToken, PostType postType) {
-        fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
-
+    public Post(FacebookClient fbClient, PostType postType) {
+        this.fbClient = fbClient;
         this.postType = postType;
     }
 
@@ -71,7 +70,6 @@ public class Post {
      */
     public String publish() {
         FacebookType publishMessageResponse = new FacebookType();
-
         try {
             switch (postType) {
                 case FEED:
@@ -88,7 +86,6 @@ public class Post {
         catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-
         return publishMessageResponse.getId();
     }
 

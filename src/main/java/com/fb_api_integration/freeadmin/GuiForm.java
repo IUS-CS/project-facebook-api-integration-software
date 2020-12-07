@@ -1,5 +1,9 @@
 package com.fb_api_integration.freeadmin;
 
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Version;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
@@ -67,6 +71,7 @@ public class GuiForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 String accessToken = AccessTokenInput.getText();
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
 
                 long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
                 long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
@@ -75,8 +80,8 @@ public class GuiForm extends JFrame {
                 try {
                     BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(OneFileChooser.getSelectedFile()), "UTF8"));
 
-                    while ((str = in.readLine()) != null) {                        //While loop to read data line by line from selected file
-                        Post post = new Post(accessToken, PostType.FEED);
+                    while ((str = in.readLine()) != null) {                        //While loop to read data lineFaceb by line from selected file
+                        Post post = new Post(fbClient, PostType.FEED);
                         post.setMessage(str);
 
                         if (!PostQueue.getInstance().isEmpty()) { // No delay for the first post
@@ -108,6 +113,7 @@ public class GuiForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String accessToken = AccessTokenInput.getText();
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
 
                 long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
                 long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
@@ -116,7 +122,7 @@ public class GuiForm extends JFrame {
                 File[] files = multiFileChooser.getSelectedFiles();                                //Store selected pictures in array
 
                 for (int i = 0; i < files.length; i++) {                    //Go through each picture
-                    Post post = new Post(accessToken, PostType.PHOTOS);
+                    Post post = new Post(fbClient, PostType.PHOTOS);
                     post.setAttachment(files[i]);
 
                     if (!PostQueue.getInstance().isEmpty()) { // No delay for the first post
@@ -142,6 +148,7 @@ public class GuiForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String accessToken = AccessTokenInput.getText();
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken, Version.LATEST);
 
                 long HoursDelay = convertHoursToMillis(Integer.parseInt(HoursField.getText()));
                 long MinutesDelay = convertMinutesToMillis(Integer.parseInt(MinutesField.getText()));
@@ -150,7 +157,7 @@ public class GuiForm extends JFrame {
                 File[] files = multiFileChooser.getSelectedFiles();                                //Store selected videos in array
 
                 for (int i = 0; i < files.length; i++) {                    //Go through each video
-                    Post post = new Post(accessToken, PostType.VIDEOS);
+                    Post post = new Post(fbClient, PostType.VIDEOS);
                     post.setAttachment(files[i]);
 
                     if (!PostQueue.getInstance().isEmpty()) { // No delay for the first post
