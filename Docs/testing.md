@@ -1,12 +1,18 @@
 # Testing
 
-### Unit and Mock Testing
+- [1. Unit and Mock Testing](#1-unit-and-mock-testing)
+- [2. Manual Testing](#2-manual-testing)
+  * [2.1 Run the FreeAdmin software](#21-run-the-freeadmin-software)
+  * [2.2 Perform GUI tests:](#22-perform-gui-tests)
+- [3. Revision History](#3-revision-history)
+
+## 1. Unit and Mock Testing
 
 We are using Maven to run our unit tests.  The Mockito framework will be used for mock testing of the 
 Free Admin software.  A mock object of the Facebook API will be created to show that the software is
 working correctly internally.
 
-### Manual Testing
+## 2. Manual Testing
 
 Manual testing will need to be done for interacting with Facebook.  There are three different types of files
 a client can use to post to Facebook; text files, image files, and video files.  Each of these file types 
@@ -14,9 +20,10 @@ will be manually tested to make sure the posts display on the user's Facebook pa
 
 Manual testing will also be completed on the GUI by following the steps below:
 
-1. Run the FreeAdmin software
+### 2.1 Run the FreeAdmin software
     * When the Free Admin software window appears, there should be 3 drop down menus along the top labelled "File", "View", and "Help".  There should be 3 text input boxes in the window; "Enter Access Token", "Every how many hours?", and "Every how many minutes".  There should also be 6 buttons in the window; "Select Pictures", "Select Videos (.mp4)", "Select Text File", "Post Pictures", "Post Videos", and "Post Status".
-2. Perform GUI tests:
+    
+### 2.2 Perform GUI tests
     * Drop down menu
         * File
             * Click on "Exit" and FreeAdmin software should terminate.
@@ -34,3 +41,11 @@ Manual testing will also be completed on the GUI by following the steps below:
             * Content: The text being sent if it's a "Post Status" submission, "Photo" if it's a "Post Photo" submission, or "Video" if it's a "Post Video" submission.
             * Delay(Minutes): The time in hours and minutes of the delay before the entry will post.
         * The entry in position 1 should disappear when it is posted with all of the remaining entries in the queue bumped up one position in the queue.
+        
+## 3. Revision History
+| Date  | Version  | Description  | Author  |
+| ------------ | ------------ | ------------ | ------------ |
+| 09/15/2020  | 0.1  | Initial draft  | Schlesener  |
+| 12/06/2020  | 0.2  | Maven integration and branch naming convention  | Schlesener  |
+| 12/07/2020  | 0.3  | Markdown layout update  | Lu  |
+|   |   |   |   |
