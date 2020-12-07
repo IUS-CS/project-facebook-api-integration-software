@@ -1,18 +1,21 @@
 # f20-project-facebook-api-integration-software
 
-Version 0.5
+Version 0.6
 
-  * [1. Introduction](#1-introduction)
-  * [2. Prerequisites](#2-prerequisites)
-  * [3. Getting Started](#3-getting-started)
-  * [4. Merge Requests and Builds](#4-merge-requests-and-builds)
-  * [5. Application and File Structure](#5-application-and-file-structure)
-  * [6. Testing Setup](#6-testing-setup)
-  * [7. Build Notes](#7-build-notes)
-  * [8. Design Patterns](#8-design-patterns)
-  * [9. Publishing](#9-publishing)
-  * [10. Resources and Credits](#10-resources-and-credits)
-  * [11. Revision History](#11-revision-history)
+- [1. Introduction](#1-introduction)
+- [2. Prerequisites](#2-prerequisites)
+  * [1) Microsoft Windows Environment](#1--microsoft-windows-environment)
+  * [2) macOS](#2--macos)
+  * [3) GNU/Linux](#3--gnu-linux)
+- [3. Getting Started](#3-getting-started)
+- [4. Build Notes](#4-build-notes)
+- [5. How to use the Application](#5-how-to-use-the-application)
+- [6. Design Patterns](#6-design-patterns)
+- [7. Testing Setup](#7-testing-setup)
+- [8. Publishing](#8-publishing)
+- [9. Merge Requests and Builds](#9-merge-requests-and-builds)
+- [10. Resources and Credits](#10-resources-and-credits)
+- [11. Revision History](#11-revision-history)
 
 ## 1. Introduction
 
@@ -51,7 +54,7 @@ It will connect to the Facebook platform server and automatically publish the de
 ## 4. Build Notes
 
 * Although FreeAdmin will build on Microsoft Windows 7 with SP1, this environment is not supported.
-* FreeAdmin will build and run with Oracle JDK8u162 on x86 platform. Because Oracle JDK9 and above are only available on x64 platform, please use the appropriate OS and JDK combination.
+* FreeAdmin will build and run with Oracle JDK8u162 on x86 platforms. Because Oracle JDK9 and nwer are only available on x64 platforms, please use the appropriate OS and JDK combination.
 * Alternatively, AdoptOpenJDK offers x86 builds for OpenJDK8-OpenJDK14. AdoptOpenJDK should build without issues, however, this build environment has not been tested. 
 
 ## 5. How to use the Application 
@@ -69,6 +72,9 @@ It will connect to the Facebook platform server and automatically publish the de
 working correctly internally.
 
 * Manual testing will need to be done for interacting with Facebook. There are three different types of files a client can use to post to Facebook: text files, image files, and video files. Each of these file types will be manually tested to make sure the posts display on the user's Facebook page correctly.
+
+* Please reference the user guide in /Docs/testing.md for more information. 
+
 
 ## 8. Publishing
 
@@ -95,6 +101,6 @@ Merge requests should be opened against the `master` branch with a proper descri
 | 10/05/2020  | 0.3  | New markdown layout  | Lu  |
 | 11/19/2020  | 0.4  | Revised the sections and updated TOC  | Lu  |
 | 12/06/2020  | 0.5  | Updated and reorgnized the sections  | Lu  |
-|   |   |   |   |
+| 12/07/2020  | 0.6  | Added reference to testing.md and updated TOC  | Lu  |
 |   |   |   |   |
 |   |   |   |   |
