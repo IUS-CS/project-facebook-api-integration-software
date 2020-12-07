@@ -6,14 +6,15 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import com.restfb.types.FacebookType;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PostTest {
 
     @Mock
@@ -22,13 +23,11 @@ public class PostTest {
     @Mock
     private FacebookClient fbClient = new DefaultFacebookClient("0", Version.LATEST);
 
+    @Mock
+    private BinaryAttachment attachment;
+
     @InjectMocks
     private Post postMock;
-
-    @Before
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void getAndSetDelayTest() {
@@ -41,19 +40,23 @@ public class PostTest {
     @Test
     public void publishTest() {
 
-        postMock = new Post(fbClient, PostType.PHOTOS);
-        postMock.setMessage("test message");
         FacebookType publishResponse = new FacebookType();
         publishResponse.setId("Post Successful");
 
         when(fbClient.publish("me/feed", FacebookType.class, Parameter.with("message", "test message"))).thenReturn(publishResponse);
-        when(fbClient.publish(eq("me/photos"), any(), any())).thenReturn(new FacebookType());
+        when(fbClient.publish("me/photos", FacebookType.class, attachment)).thenReturn(publishResponse);
         when(fbClient.publish("me/videos", FacebookType.class, attachment)).thenReturn(publishResponse);
-
         when(publishMessageResponse.getId()).thenReturn("Post Successful");
 
+        postMock = new Post(fbClient, PostType.PHOTOS);
         assertEquals("Post Successful", postMock.publish());
 
+        postMock = new Post(fbClient, PostType.VIDEOS);
+        assertEquals("Post Successful", postMock.publish());
+
+        postMock = new Post(fbClient, PostType.FEED);
+        postMock.setMessage("test message");
+        assertEquals("Post Successful", postMock.publish());
     }
 
     @Test

@@ -8,6 +8,7 @@ import java.util.TimerTask;
 public class PostTimerTask extends TimerTask {
 
     long lastPostMs = 0;
+    private Post post;
 
     @Override
     public void run() {
@@ -19,6 +20,7 @@ public class PostTimerTask extends TimerTask {
 
         long currentMs = System.currentTimeMillis();
         if (currentMs > lastPostMs + queue.getDelayBeforeNext()) {
+            //Post post = queue.dequeue();
             Post post = queue.dequeue();
             String id = post.publish();
             if (id != null) {
