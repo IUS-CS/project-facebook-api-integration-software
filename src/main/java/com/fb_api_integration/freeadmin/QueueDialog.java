@@ -26,7 +26,7 @@ public class QueueDialog extends JDialog {
 
         defaultTableModel.addColumn("Position");
         defaultTableModel.addColumn("Content");
-        defaultTableModel.addColumn("Delay (Minutes)");
+        defaultTableModel.addColumn("Delay");
 
         Timer refreshTimer = new Timer();
         refreshTimer.scheduleAtFixedRate(new TimerTask() {
