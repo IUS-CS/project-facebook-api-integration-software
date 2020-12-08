@@ -84,4 +84,11 @@ public class PostQueue {
     public int getSize() {
         return queue.size();
     }
+
+    /**
+     * Clears the queue
+     */
+    public void clear() {
+        queue.clear();
+    }
 }

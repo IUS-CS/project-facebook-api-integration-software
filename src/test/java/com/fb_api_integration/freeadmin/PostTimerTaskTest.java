@@ -20,9 +20,8 @@ public class PostTimerTaskTest {
 
     @Test
     public void runPostTimerTest() {
-        Post post;
         PostQueue queue = PostQueue.getInstance();
-        post = queue.dequeue();
+        queue.clear();
 
         PostTimerTask test = new PostTimerTask();
         test.run();
