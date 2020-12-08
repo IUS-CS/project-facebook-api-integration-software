@@ -92,4 +92,20 @@ public class PostQueueTest {
         assertEquals(post3, dequeuedPost);
         assertEquals(0, queue.getSize());
     }
+
+    @Test
+    public void ClearTest() {
+        PostQueue queue = PostQueue.getInstance();
+        FacebookClient fbClient = new DefaultFacebookClient("0", Version.LATEST);
+
+        Post post1 = new Post(fbClient, PostType.FEED);
+        queue.enqueue(post1);
+
+        Post post2 = new Post(fbClient, PostType.PHOTOS);
+        queue.enqueue(post2);
+
+        queue.clear();
+
+        assertEquals(0, queue.getSize());
+    }
 }
