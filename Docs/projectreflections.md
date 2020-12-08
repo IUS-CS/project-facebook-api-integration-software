@@ -46,6 +46,11 @@ I participated to write the required documents that describe our software.
 ----------------------
  ## James Schlesener
 
-My experience with this project has been good.  I have learned how to use Git and Github when working on a project as a
-team.  I have primarily reviewed code and proofread documents that my teammates have developed.  I created our team
-testing.md document, and I am working on completing the unit testing and mock testing for our code.
+I had used Github in the past for individual assignments, but this was the first time I used it for a group project.  Using
+Git and Github on this project really helped me understand how it all works when working collaboratively.  It was a very
+valuable learning experience and really helped our team get the work done on our project while working in a completely remote
+environment.  I also learned how to work on a project as a team using sprints which I had never done before.  I created
+our team testing.md document and worked on completing unit and mock testing for our code.  I was unfamiliar with mock testing
+before this project and was able to learn how Mockito works to create mock objects for unit testing.  I did struggle some
+with the mock testing, but in the process, I learned a lot more about debugging tools and feel like I have a better understanding
+of how mocks and testing all work.
